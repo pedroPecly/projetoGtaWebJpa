@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="D:\estudos\4o_periodo\programacao_orientada_objeto\projeto_web_JPA\target\aplicacao_web_JPA-1.0-SNAPSHOT" path="/aplicacao_web_JPA">
+  <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="ovo" password="" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/Agenda?zeroDateTimeBehavior=CONVERT_TO_NULL" username="root"/>
+</Context>

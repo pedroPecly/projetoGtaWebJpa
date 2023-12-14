@@ -1,0 +1,216 @@
+14-Dec-2023 00:44:56.492 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+14-Dec-2023 00:44:56.492 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+14-Dec-2023 00:44:56.495 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@52b06bef')
+14-Dec-2023 00:52:44.219 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+14-Dec-2023 00:52:44.219 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+14-Dec-2023 12:17:05.718 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+14-Dec-2023 12:17:05.718 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+14-Dec-2023 12:17:05.721 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@7cdbaa50')
+14-Dec-2023 12:59:28.850 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+14-Dec-2023 12:59:28.850 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+14-Dec-2023 13:44:05.979 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+14-Dec-2023 13:44:05.979 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+14-Dec-2023 13:44:05.981 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@7927209f')
+14-Dec-2023 13:57:49.023 SEVERE [http-nio-8080-exec-28] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/projeto_gta6_web] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [30] in the jsp file: [/formulario.jsp]
+acao cannot be resolved to a variable
+27:         <div id="formulario">
+28:             <form action="PerfilSrv" method="POST" autocomplete="off">
+29:                 <p>
+30:                     <input type="hidden" name="acao" value="<%=acao %>">
+31:                 </p>
+32:                 <p>
+33:                     <input type="hidden" name="id" value="<%=id %>">
+
+
+An error occurred at line: [33] in the jsp file: [/formulario.jsp]
+id cannot be resolved to a variable
+30:                     <input type="hidden" name="acao" value="<%=acao %>">
+31:                 </p>
+32:                 <p>
+33:                     <input type="hidden" name="id" value="<%=id %>">
+34:                 </p>
+35:                 <p>
+36:                     <label for="nome">Nome:</label>
+
+
+An error occurred at line: [37] in the jsp file: [/formulario.jsp]
+nome cannot be resolved to a variable
+34:                 </p>
+35:                 <p>
+36:                     <label for="nome">Nome:</label>
+37:                     <input type="text" id="nome" name="nome" placeholder="Informe seu nome" value="<%=nome %>">
+38:                 </p>
+39:                 <p>
+40:                     <label for="telefone">Telefone:</label>
+
+
+An error occurred at line: [41] in the jsp file: [/formulario.jsp]
+telefone cannot be resolved to a variable
+38:                 </p>
+39:                 <p>
+40:                     <label for="telefone">Telefone:</label>
+41:                     <input type="text" id="telefone" name="telefone" placeholder="Informe o seu telefone" value="<%=telefone %>">
+42:                 </p>
+43:                 <p>
+44:                     <label for="cpf">CPF:</label>
+
+
+An error occurred at line: [45] in the jsp file: [/formulario.jsp]
+cpf cannot be resolved to a variable
+42:                 </p>
+43:                 <p>
+44:                     <label for="cpf">CPF:</label>
+45:                     <input type="text" id="cpf" name="cpf" placeholder="Informe seu CPF" value="<%=cpf %>">
+46:                 </p>
+47:                 <p>
+48:                     <label for="email">Email:</label>
+
+
+An error occurred at line: [49] in the jsp file: [/formulario.jsp]
+email cannot be resolved to a variable
+46:                 </p>
+47:                 <p>
+48:                     <label for="email">Email:</label>
+49:                     <input type="email" id="email" name="email" placeholder="Informe seu email" value="<%=email %>">
+50:                 </p>
+51:                 <p>
+52:                     <label for="date">Data Nasc:</label>
+
+
+An error occurred at line: [53] in the jsp file: [/formulario.jsp]
+date cannot be resolved to a variable
+50:                 </p>
+51:                 <p>
+52:                     <label for="date">Data Nasc:</label>
+53:                     <input type="date" name="date" id="date" value="<%=date %>">
+54:                 </p>
+55:                 <div class="botoes">
+56:                     <input type="submit" value="Enviar" id="btnEnviar">
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [30] in the jsp file: [/formulario.jsp]
+acao cannot be resolved to a variable
+27:         <div id="formulario">
+28:             <form action="PerfilSrv" method="POST" autocomplete="off">
+29:                 <p>
+30:                     <input type="hidden" name="acao" value="<%=acao %>">
+31:                 </p>
+32:                 <p>
+33:                     <input type="hidden" name="id" value="<%=id %>">
+
+
+An error occurred at line: [33] in the jsp file: [/formulario.jsp]
+id cannot be resolved to a variable
+30:                     <input type="hidden" name="acao" value="<%=acao %>">
+31:                 </p>
+32:                 <p>
+33:                     <input type="hidden" name="id" value="<%=id %>">
+34:                 </p>
+35:                 <p>
+36:                     <label for="nome">Nome:</label>
+
+
+An error occurred at line: [37] in the jsp file: [/formulario.jsp]
+nome cannot be resolved to a variable
+34:                 </p>
+35:                 <p>
+36:                     <label for="nome">Nome:</label>
+37:                     <input type="text" id="nome" name="nome" placeholder="Informe seu nome" value="<%=nome %>">
+38:                 </p>
+39:                 <p>
+40:                     <label for="telefone">Telefone:</label>
+
+
+An error occurred at line: [41] in the jsp file: [/formulario.jsp]
+telefone cannot be resolved to a variable
+38:                 </p>
+39:                 <p>
+40:                     <label for="telefone">Telefone:</label>
+41:                     <input type="text" id="telefone" name="telefone" placeholder="Informe o seu telefone" value="<%=telefone %>">
+42:                 </p>
+43:                 <p>
+44:                     <label for="cpf">CPF:</label>
+
+
+An error occurred at line: [45] in the jsp file: [/formulario.jsp]
+cpf cannot be resolved to a variable
+42:                 </p>
+43:                 <p>
+44:                     <label for="cpf">CPF:</label>
+45:                     <input type="text" id="cpf" name="cpf" placeholder="Informe seu CPF" value="<%=cpf %>">
+46:                 </p>
+47:                 <p>
+48:                     <label for="email">Email:</label>
+
+
+An error occurred at line: [49] in the jsp file: [/formulario.jsp]
+email cannot be resolved to a variable
+46:                 </p>
+47:                 <p>
+48:                     <label for="email">Email:</label>
+49:                     <input type="email" id="email" name="email" placeholder="Informe seu email" value="<%=email %>">
+50:                 </p>
+51:                 <p>
+52:                     <label for="date">Data Nasc:</label>
+
+
+An error occurred at line: [53] in the jsp file: [/formulario.jsp]
+date cannot be resolved to a variable
+50:                 </p>
+51:                 <p>
+52:                     <label for="date">Data Nasc:</label>
+53:                     <input type="date" name="date" id="date" value="<%=date %>">
+54:                 </p>
+55:                 <div class="botoes">
+56:                     <input type="submit" value="Enviar" id="btnEnviar">
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:102)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:214)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:531)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:398)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:368)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:352)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:399)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:379)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:327)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:1623)
+14-Dec-2023 14:18:46.040 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+14-Dec-2023 14:18:46.041 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+14-Dec-2023 14:20:14.587 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+14-Dec-2023 14:20:14.587 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+14-Dec-2023 14:20:14.594 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@611ffa8d')
+14-Dec-2023 14:38:30.988 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+14-Dec-2023 14:38:30.988 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+14-Dec-2023 14:40:45.911 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+14-Dec-2023 14:40:45.911 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+14-Dec-2023 14:40:45.913 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@1235abb2')
