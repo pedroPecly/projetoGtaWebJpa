@@ -34,7 +34,8 @@ public class PerfilSrv extends HttpServlet {
                 case "inclusao":
                     p = new Perfil(nome, telefone, cpf, email, LocalDate.parse(date));
                     dao.incluir(p);
-                    response.sendRedirect("index.html");
+                    rd = request.getRequestDispatcher("index.html");
+                    rd.forward(request, response);
                     break;
             }
         } catch (Exception ex) {
