@@ -12,7 +12,7 @@
 </head>
 
 <%
-    String acao     = request.getParameter("acao");
+    String acao = request.getParameter("acao");
 %>
 
 <body>
