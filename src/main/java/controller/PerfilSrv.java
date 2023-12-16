@@ -24,7 +24,7 @@ public class PerfilSrv extends HttpServlet {
             String nome = request.getParameter("nome");
             String cpf = request.getParameter("cpf");
             String email = request.getParameter("email");
-            String telefone = request.getParameter("telefone");
+            String senha = request.getParameter("senha");
             String date = request.getParameter("date");
             PerfilDaoJpa dao = new PerfilDaoJpa();
             RequestDispatcher rd;
@@ -32,7 +32,7 @@ public class PerfilSrv extends HttpServlet {
 
             switch (acao) {
                 case "inclusao":
-                    p = new Perfil(nome, telefone, cpf, email, LocalDate.parse(date));
+                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
                     dao.incluir(p);
                     rd = request.getRequestDispatcher("index.html");
                     rd.forward(request, response);

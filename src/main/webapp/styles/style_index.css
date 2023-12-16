@@ -1,44 +1,35 @@
+/* Reset CSS */
 * {
   margin: 0;
   padding: 0;
 }
 
-h2 {
+/* Estilos gerais */
+body {
+  background-color: #000;
+  color: #fff;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
   font-weight: 700;
   font-size: 40px;
 }
 
-li {
-  list-style: none;
-  margin: 50px;
-}
-
 a {
   text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 20px;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-body {
-  background-color: #000;
-  color: #fff;
-}
-
+/* Conteúdo */
 .conteudo {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
-}
-
-#logo {
-  width: 100px;
-  height: auto;
-  margin: 0 auto;
 }
 
 .imggta6 {
@@ -58,6 +49,12 @@ body {
   flex-direction: column;
 }
 
+#logo {
+  width: 100px;
+  height: auto;
+  margin: 0 auto;
+}
+
 .cabecalho {
   background: linear-gradient(135deg, purple, #2d003d, #89023e, #ff6b6b);
   width: 100%;
@@ -72,23 +69,9 @@ body {
 .menu {
   display: flex;
   text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   position: absolute;
   margin-left: 1%;
-}
-
-.btn {
-  background-color: #ff6b6b;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  margin-right: 15%;
-  margin-top: 50px;
-  font-size: 20px;
-  color: white;
-  cursor: pointer;
-  text-align: center;
 }
 
 ul {
@@ -105,25 +88,56 @@ ul li {
   margin: 0 20px;
 }
 
+.btn {
+  background-color: #ff6b6b;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 15%;
+  margin-top: 50px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
 .btn:hover {
   background: linear-gradient(135deg, purple, #2d003d, #89023e, #ff6b6b);
   transition: 0.5s;
 }
 
-.rodape {
+/* Rodapé */
+footer {
   background-color: black;
   color: white;
   width: 100%;
-  border: none;
-  z-index: 100;
-  position: relative;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  padding: 20px 0;
+}
+
+.rodape {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-  min-height: 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .rodape ul {
-  margin-right: 35%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 20px;
+  /* Ajuste para o canto esquerdo */
+}
+
+.rodape p {
+  margin: 0;
+  position: absolute;
+  right: 20px;
+  /* Ajuste para o canto direito */
 }

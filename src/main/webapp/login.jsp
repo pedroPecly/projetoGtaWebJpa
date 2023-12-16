@@ -1,4 +1,4 @@
-<%-- Document : formulario Created on : 14 de dez. de 2023, 13:08:49 Author : Pedro --%>
+<%-- Document : login Created on : 16 de dez. de 2023, 16:27:51 Author : Pedro --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -6,9 +6,8 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="styles/style_formulario.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles/style_login.css">
 </head>
 
 <%
@@ -29,32 +28,20 @@
     </header>
     <main>
         <div id="formulario">
-            <form action="PerfilSrv" method="POST" autocomplete="off">
+            <form action="LoginSrv" method="POST" autocomplete="off">
                 <p>
                     <input type="hidden" name="acao" value="<%=acao %>">
                 </p>
                 <p>
-                    <label for="nome">Nome:</label>
+                    <label for="nome">login:</label>
                     <input type="text" id="nome" name="nome" placeholder="Informe seu nome">
                 </p>
                 <p>
                     <label for="senha">senha:</label>
                     <input type="password" id="senha" name="senha" placeholder="Informe a seu senha">
                 </p>
-                <p>
-                    <label for="cpf">CPF:</label>
-                    <input type="text" id="cpf" name="cpf" placeholder="Informe seu CPF">
-                </p>
-                <p>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Informe seu email">
-                </p>
-                <p>
-                    <label for="date">Data Nasc:</label>
-                    <input type="date" name="date" id="date">
-                </p>
                 <div class="botoes">
-                    <input type="submit" value="Enviar" id="btnEnviar">
+                    <input type="submit" value="Login" id="btnLogin">
                     <input type="reset" value="limpar" id="btnVoltar">
                 </div>
             </form>

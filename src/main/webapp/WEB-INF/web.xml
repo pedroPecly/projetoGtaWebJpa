@@ -4,9 +4,17 @@
         <servlet-name>PerfilSrv</servlet-name>
         <servlet-class>controller.PerfilSrv</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginSrv</servlet-name>
+        <servlet-class>controller.LoginSrv</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PerfilSrv</servlet-name>
         <url-pattern>/PerfilSrv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginSrv</servlet-name>
+        <url-pattern>/LoginSrv</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

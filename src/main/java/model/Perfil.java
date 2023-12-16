@@ -13,14 +13,14 @@ public class Perfil {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String nome;
-    private String telefone;
+    private String senha;
     private String cpf;
     private String email;
     private LocalDate dataNascimento;
 
-    public Perfil(String nome, String telefone, String cpf, String email, LocalDate dataNascimento) {
+    public Perfil(String nome, String senha, String cpf, String email, LocalDate dataNascimento) {
         this.nome = nome;
-        this.telefone = telefone;
+        this.senha = senha;
         this.cpf = cpf;
         this.email = email;
         this.dataNascimento = dataNascimento;
@@ -45,12 +45,12 @@ public class Perfil {
         this.nome = nome;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getsenha() {
+        return senha;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setsenha(String senha) {
+        this.senha = senha;
     }
 
     public String getCpf() {
