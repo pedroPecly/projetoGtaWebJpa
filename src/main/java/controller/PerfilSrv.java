@@ -26,6 +26,7 @@ public class PerfilSrv extends HttpServlet {
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
             String date = request.getParameter("date");
+            
             PerfilDaoJpa dao = new PerfilDaoJpa();
             RequestDispatcher rd;
             Perfil p = null;
@@ -33,7 +34,19 @@ public class PerfilSrv extends HttpServlet {
             switch (acao) {
                 case "inclusao":
                     p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
+
                     dao.incluir(p);
+                    
+                    rd = request.getRequestDispatcher("index.html");
+                    rd.forward(request, response);
+                    break;
+
+                case "edicao":
+                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
+                    p.setId(Integer.parseInt(id));
+
+                    dao.editar(p);
+
                     rd = request.getRequestDispatcher("index.html");
                     rd.forward(request, response);
                     break;

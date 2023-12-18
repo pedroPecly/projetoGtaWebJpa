@@ -14,7 +14,15 @@
     String acao = request.getParameter("acao");
 %>
 
+
+
 <body>
+    <% String mensagemErro = (String) request.getAttribute("mensagemErro"); %>
+    <% if (mensagemErro != null) { %>
+        <script>
+            alert("<%= mensagemErro %>");
+        </script>
+    <% } %>
     <header>
         <nav class="cabecalho">
             <div class="menu">
@@ -34,11 +42,14 @@
                 </p>
                 <p>
                     <label for="nome">login:</label>
-                    <input type="text" id="nome" name="nome" placeholder="Informe seu nome">
+                    <input type="text" id="nome" name="nome" placeholder="Informe seu nome" required>
                 </p>
                 <p>
                     <label for="senha">senha:</label>
-                    <input type="password" id="senha" name="senha" placeholder="Informe a seu senha">
+                    <input type="password" id="senha" name="senha" placeholder="Informe a seu senha" required>
+                </p>
+                <p>
+                    <a href="alteracao.html" id="alterar-senha">alterar senha</a>
                 </p>
                 <div class="botoes">
                     <input type="submit" value="Login" id="btnLogin">

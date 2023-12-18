@@ -66,7 +66,7 @@ public class PerfilDaoJpa implements InterfaceDao<Perfil> {
         EntityManager em = ConnFactory.getEntityManager();
         try {
             em.getTransaction().begin();
-            lista = em.createQuery("FROM Perfil c").getResultList();
+            lista = em.createQuery("FROM Perfil p").getResultList();
             em.getTransaction().commit();
         } finally {
             em.close();
