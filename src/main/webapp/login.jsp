@@ -14,8 +14,6 @@
     String acao = request.getParameter("acao");
 %>
 
-
-
 <body>
     <% String mensagemErro = (String) request.getAttribute("mensagemErro"); %>
     <% if (mensagemErro != null) { %>

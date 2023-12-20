@@ -32,18 +32,30 @@ public class LoginSrv extends HttpServlet {
                     if (verificarPerfil(nome, senha) != null) {
                         p = verificarPerfil(nome, senha);
 
-                        rd = request.getRequestDispatcher(
+                        rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
+                        
+                        /*rd = request.getRequestDispatcher(
                                 "formulario.jsp?acao=edicao&id=" + p.getId() +
                                         "&nome=" + p.getNome() +
                                         "&senha=" + p.getsenha() +
                                         "&cpf=" + p.getCpf() +
-                                        "&email=" + p.getEmail());
+                                        "&email=" + p.getEmail());*/
                         rd.forward(request, response);
                     } else {
                         request.setAttribute("mensagemErro", "Nome de usuário ou senha inválidos!");
                         rd = request.getRequestDispatcher("login.jsp");
                         rd.forward(request, response);
                     }
+                    break;
+                case "edicao":
+                    p = verificarPerfil(nome, senha);
+                    rd = request.getRequestDispatcher(
+                                "formulario.jsp?acao=edicao&id=" + p.getId() +
+                                        "&nome=" + p.getNome() +
+                                        "&senha=" + p.getsenha() +
+                                        "&cpf=" + p.getCpf() +
+                                        "&email=" + p.getEmail());
+                    rd.forward(request, response);
                     break;
             }
         } catch (Exception ex) {
