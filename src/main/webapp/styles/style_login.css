@@ -12,6 +12,11 @@ a {
   text-decoration: none;
 }
 
+#formulario p a{
+  text-decoration: underline;
+  font-size: 14px;
+}
+
 #btnVoltar a {
   color: black;
 }

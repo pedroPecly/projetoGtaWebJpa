@@ -37,7 +37,7 @@ public class PerfilSrv extends HttpServlet {
 
                     dao.incluir(p);
                     
-                    rd = request.getRequestDispatcher("index.html");
+                    rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
                     rd.forward(request, response);
                     break;
 
@@ -47,7 +47,7 @@ public class PerfilSrv extends HttpServlet {
 
                     dao.editar(p);
 
-                    rd = request.getRequestDispatcher("index.html");
+                    rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
                     rd.forward(request, response);
                     break;
             }

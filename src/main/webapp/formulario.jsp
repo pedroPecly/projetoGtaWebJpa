@@ -32,7 +32,11 @@
         <nav class="cabecalho">
             <div class="menu">
                 <ul>
-                    <li class="links"><a href="index.html">Home</a></li>
+                    <% if (acao != null && acao.equals("edicao")) { %>
+                        <li class="links"><a href="telaUsuario.jsp?nome=<%= nome %>&senha=<%= senha %>">Voltar</a></li>
+                    <% } else { %>
+                        <li class="links"><a href="index.html">Voltar</a></li>
+                    <% } %>
                     <li class="links"><a href="sobre.html">Sobre</a></li>
                 </ul>
             </div>
