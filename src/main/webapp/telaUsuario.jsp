@@ -21,7 +21,7 @@
             <div class="menu">
                 <ul>
                     <li><p>Bem vindo <%=nome %></p></li>
-                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="index.html">Sair</a></li>
                 </ul>
             </div>
             <img id="logo" src="imagens/Rockstar_London-Logo.wine.png" alt="Logo Rockstar London">
@@ -37,6 +37,12 @@
                 <input type="hidden" name="nome" value="<%=nome%>">
                 <input type="hidden" name="senha" value="<%=senha%>">
                 <button type="submit" class="btn">Editar perfil</button>
+            </form>
+            <form action="PerfilSrv" method="POST">
+                <input type="hidden" name="acao" value="listagem">
+                <input type="hidden" name="nome" value="<%=nome%>">
+                <input type="hidden" name="senha" value="<%=senha%>">
+                <button type="submit" class="btn">Lista de espera</button>
             </form>
         </div>
     </main>

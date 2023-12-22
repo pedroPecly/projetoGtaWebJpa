@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -50,10 +51,41 @@ public class PerfilSrv extends HttpServlet {
                     rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
                     rd.forward(request, response);
                     break;
+
+                case "listagem":
+                    rd = request.getRequestDispatcher("listagem.jsp?lista=" + listagem() + "&nome=" + nome + "&senha=" + senha);
+                    rd.forward(request, response);
+                    break;
             }
         } catch (Exception ex) {
             Logger.getLogger(PerfilSrv.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private String listagem() {
+        PerfilDaoJpa dao = new PerfilDaoJpa();
+        List<Perfil> lista = null;
+        try {
+            lista = dao.listar();
+        } catch (Exception ex) {
+            Logger.getLogger(PerfilSrv.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String listaHTML = "";
+        for (Perfil perfil : lista) {
+            listaHTML = listaHTML
+                    + "<tr>"
+                    + "<td>" + perfil.getNome() + "</td>"
+                    
+                    + "<td><form action=PerfilSrv?acao=edicao method='POST'>"
+                    + "<input type='hidden' name='id' value=" + 
+                        perfil.getId() + "><input type='submit' value=editar id='btnEditar'>"
+                    + "</form></td>"
+                    + "<td><form action=PerfilSrv?acao=exclusao method='POST'>"
+                    + "<input type='hidden' name='id' value=" + 
+                        perfil.getId() + "><input type='submit' value=excluir id='btnExcluir'>" + "</form></td>"
+                    + "</tr>";
+        }
+        return listaHTML;
     }
 
     @Override

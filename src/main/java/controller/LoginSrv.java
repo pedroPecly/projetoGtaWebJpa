@@ -57,6 +57,10 @@ public class LoginSrv extends HttpServlet {
                                         "&email=" + p.getEmail());
                     rd.forward(request, response);
                     break;
+
+                case "alterar-senha":
+                    
+                    break;
             }
         } catch (Exception ex) {
             Logger.getLogger(LoginSrv.class.getName()).log(Level.SEVERE, null, ex);
