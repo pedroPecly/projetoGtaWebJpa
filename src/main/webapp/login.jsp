@@ -47,7 +47,7 @@
                     <input type="password" id="senha" name="senha" placeholder="Informe a seu senha" required>
                 </p>
                 <p>
-                    <a href="alteracao.html" id="alterar-senha">alterar senha</a>
+                    <a href="index.html" id="alterar-senha">alterar senha</a>
                 </p>
                 <div class="botoes">
                     <input type="submit" value="Login" id="btnLogin">

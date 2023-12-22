@@ -71,9 +71,12 @@ public class PerfilSrv extends HttpServlet {
             Logger.getLogger(PerfilSrv.class.getName()).log(Level.SEVERE, null, ex);
         }
         String listaHTML = "";
-        for (Perfil perfil : lista) {
+        for (int i = 0; i < lista.size(); i++) {
+            Perfil perfil = null;
+            perfil = lista.get(i);
             listaHTML = listaHTML
                     + "<tr>"
+                    + "<td>" + (i + 1) 
                     + "<td>" + perfil.getNome() + "</td>"
                     
                     + "<td><form action=PerfilSrv?acao=edicao method='POST'>"
