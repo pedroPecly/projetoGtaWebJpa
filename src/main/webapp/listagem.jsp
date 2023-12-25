@@ -38,8 +38,6 @@
                         <tr>
                             <th>Posicao</th>
                             <th>Nome</th>
-                            <th></th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

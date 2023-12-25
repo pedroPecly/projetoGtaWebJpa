@@ -78,10 +78,34 @@ public class PerfilSrv extends HttpServlet {
                     + "<tr>"
                     + "<td>" + (i + 1) 
                     + "<td>" + perfil.getNome() + "</td>"
+                    + "</tr>";
+        }
+        return listaHTML;
+    }
+
+    /*
+    private String listagem() {
+        PerfilDaoJpa dao = new PerfilDaoJpa();
+        List<Perfil> lista = null;
+        try {
+            lista = dao.listar();
+        } catch (Exception ex) {
+            Logger.getLogger(PerfilSrv.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String listaHTML = "";
+        for (int i = 0; i < lista.size(); i++) {
+            Perfil perfil = null;
+            perfil = lista.get(i);
+            listaHTML = listaHTML
+                    + "<tr>"
+                    + "<td>" + (i + 1) 
+                    + "<td>" + perfil.getNome() + "</td>"
                     
-                    + "<td><form action=PerfilSrv?acao=edicao method='POST'>"
-                    + "<input type='hidden' name='id' value=" + 
-                        perfil.getId() + "><input type='submit' value=editar id='btnEditar'>"
+                    + "<td><form action='LoginSrv' method='POST'>"
+                    + "<input type='hidden' name='acao' value=edicao"
+                    + "><input type='hidden' name='nome' value=" + perfil.getNome() 
+                    + "><input type='hidden' name='senha' value=" + perfil.getsenha() 
+                    + "><input type='submit' value=editar id='btnEditar'>"
                     + "</form></td>"
                     + "<td><form action=PerfilSrv?acao=exclusao method='POST'>"
                     + "<input type='hidden' name='id' value=" + 
@@ -90,7 +114,7 @@ public class PerfilSrv extends HttpServlet {
         }
         return listaHTML;
     }
-
+    */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

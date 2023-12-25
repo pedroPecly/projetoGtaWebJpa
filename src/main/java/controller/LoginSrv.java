@@ -45,15 +45,12 @@ public class LoginSrv extends HttpServlet {
                     p = verificarPerfil(nome, senha);
                     rd = request.getRequestDispatcher(
                                 "formulario.jsp?acao=edicao&id=" + p.getId() +
-                                        "&nome=" + p.getNome() +
-                                        "&senha=" + p.getsenha() +
-                                        "&cpf=" + p.getCpf() +
-                                        "&email=" + p.getEmail());
+                                "&nome=" + p.getNome() +
+                                "&senha=" + p.getsenha() +
+                                "&cpf=" + p.getCpf() +
+                                "&email=" + p.getEmail()
+                            );
                     rd.forward(request, response);
-                    break;
-
-                case "alterar-senha":
-                    
                     break;
             }
         } catch (Exception ex) {
