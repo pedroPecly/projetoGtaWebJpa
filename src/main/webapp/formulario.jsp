@@ -28,6 +28,12 @@
 %>
 
 <body>
+    <% String mensagemErro = (String) request.getAttribute("mensagemErro"); %>
+    <% if (mensagemErro != null) { %>
+        <script>
+            alert("<%= mensagemErro %>");
+        </script>
+    <% } %>
     <header>
         <nav class="cabecalho">
             <div class="menu">

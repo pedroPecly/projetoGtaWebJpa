@@ -34,10 +34,19 @@ public class PerfilSrv extends HttpServlet {
 
             switch (acao) {
                 case "inclusao":
+                    for(int i = 0; i < dao.listar().size(); i++){
+                        if(dao.listar().get(i).getNome().equals(nome)){
+                            request.setAttribute("mensagemErro", "Nome de usuário invalido");
+                            rd = request.getRequestDispatcher("formulario.jsp");
+                            rd.forward(request, response);
+                            break;
+                        }
+                    }
+
                     p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
 
                     dao.incluir(p);
-                    
+
                     rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
                     rd.forward(request, response);
                     break;
@@ -53,8 +62,13 @@ public class PerfilSrv extends HttpServlet {
                     break;
 
                 case "listagem":
-                    rd = request.getRequestDispatcher("listagem.jsp?lista=" + listagem() + "&nome=" + nome + "&senha=" + senha);
-                    rd.forward(request, response);
+                    if(nome.equals("admin") && senha.equals("admin")) {
+                        rd = request.getRequestDispatcher("listagem.jsp?lista=" + listagemAdmin() + "&nome=" + nome + "&senha=" + senha);
+                        rd.forward(request, response);
+                    } else {
+                        rd = request.getRequestDispatcher("listagem.jsp?lista=" + listagem() + "&nome=" + nome + "&senha=" + senha);
+                        rd.forward(request, response);
+                    }
                     break;
             }
         } catch (Exception ex) {
@@ -83,8 +97,8 @@ public class PerfilSrv extends HttpServlet {
         return listaHTML;
     }
 
-    /*
-    private String listagem() {
+    
+    private String listagemAdmin() {
         PerfilDaoJpa dao = new PerfilDaoJpa();
         List<Perfil> lista = null;
         try {
@@ -114,7 +128,7 @@ public class PerfilSrv extends HttpServlet {
         }
         return listaHTML;
     }
-    */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
