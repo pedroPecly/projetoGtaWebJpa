@@ -38,7 +38,7 @@ public class PerfilDaoJpa implements InterfaceDao<Perfil> {
         try {
             em.getTransaction().begin();
             em.remove(em.find(Perfil.class, entidade.getId()));
-            em.getTransaction();
+            em.getTransaction().commit();;
         } finally {
             em.close();
         }

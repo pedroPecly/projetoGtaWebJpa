@@ -27,28 +27,25 @@ public class PerfilSrv extends HttpServlet {
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
             String date = request.getParameter("date");
-            
+
             PerfilDaoJpa dao = new PerfilDaoJpa();
             RequestDispatcher rd;
             Perfil p = null;
 
             switch (acao) {
                 case "inclusao":
-                    for(int i = 0; i < dao.listar().size(); i++){
-                        if(dao.listar().get(i).getNome().equals(nome)){
-                            request.setAttribute("mensagemErro", "Nome de usuário invalido");
+                    for (int i = 0; i < dao.listar().size(); i++) {
+                        if (dao.listar().get(i).getNome().equals(nome) || dao.listar().get(i).getEmail().equals(email) || dao.listar().get(i).getCpf().equals(cpf)) {
+                            request.setAttribute("mensagemErro", "credenciais invalidas");
                             rd = request.getRequestDispatcher("formulario.jsp");
                             rd.forward(request, response);
-                            break;
+                        } else {
+                            p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
+                            dao.incluir(p);
+                            rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
+                            rd.forward(request, response);
                         }
                     }
-
-                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
-
-                    dao.incluir(p);
-
-                    rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
-                    rd.forward(request, response);
                     break;
 
                 case "edicao":
@@ -61,12 +58,21 @@ public class PerfilSrv extends HttpServlet {
                     rd.forward(request, response);
                     break;
 
+                case "exclusao":
+                    dao.excluir(dao.pesquisarPorId(Integer.parseInt(id)));
+                    rd = request.getRequestDispatcher(
+                                "listagem.jsp?lista=" + listagemAdmin() + "&nome=admin&senha=admin");
+                    rd.forward(request, response);
+                    break;
+
                 case "listagem":
-                    if(nome.equals("admin") && senha.equals("admin")) {
-                        rd = request.getRequestDispatcher("listagem.jsp?lista=" + listagemAdmin() + "&nome=" + nome + "&senha=" + senha);
+                    if (nome.equals("admin") && senha.equals("admin")) {
+                        rd = request.getRequestDispatcher(
+                                "listagem.jsp?lista=" + listagemAdmin() + "&nome=admin&senha=admin");
                         rd.forward(request, response);
                     } else {
-                        rd = request.getRequestDispatcher("listagem.jsp?lista=" + listagem() + "&nome=" + nome + "&senha=" + senha);
+                        rd = request.getRequestDispatcher(
+                                "listagem.jsp?lista=" + listagem() + "&nome=" + nome + "&senha=" + senha);
                         rd.forward(request, response);
                     }
                     break;
@@ -90,14 +96,13 @@ public class PerfilSrv extends HttpServlet {
             perfil = lista.get(i);
             listaHTML = listaHTML
                     + "<tr>"
-                    + "<td>" + (i + 1) 
+                    + "<td>" + (i + 1)
                     + "<td>" + perfil.getNome() + "</td>"
                     + "</tr>";
         }
         return listaHTML;
     }
 
-    
     private String listagemAdmin() {
         PerfilDaoJpa dao = new PerfilDaoJpa();
         List<Perfil> lista = null;
@@ -112,23 +117,16 @@ public class PerfilSrv extends HttpServlet {
             perfil = lista.get(i);
             listaHTML = listaHTML
                     + "<tr>"
-                    + "<td>" + (i + 1) 
+                    + "<td>" + (i + 1)
                     + "<td>" + perfil.getNome() + "</td>"
-                    
-                    + "<td><form action='LoginSrv' method='POST'>"
-                    + "<input type='hidden' name='acao' value=edicao"
-                    + "><input type='hidden' name='nome' value=" + perfil.getNome() 
-                    + "><input type='hidden' name='senha' value=" + perfil.getsenha() 
-                    + "><input type='submit' value=editar id='btnEditar'>"
-                    + "</form></td>"
                     + "<td><form action=PerfilSrv?acao=exclusao method='POST'>"
-                    + "<input type='hidden' name='id' value=" + 
-                        perfil.getId() + "><input type='submit' value=excluir id='btnExcluir'>" + "</form></td>"
+                    + "<input type='hidden' name='id' value=" +
+                    perfil.getId() + "><input type='submit' value=excluir id='btnExcluir'>" + "</form></td>"
                     + "</tr>";
         }
         return listaHTML;
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
