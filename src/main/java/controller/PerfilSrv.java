@@ -48,6 +48,18 @@ public class PerfilSrv extends HttpServlet {
                     }
                     break;
 
+                case "pre-edicao":
+                    p = dao.pesquisarPorId(Integer.parseInt(id));
+                    rd = request.getRequestDispatcher(
+                                "formulario.jsp?acao=edicao-admin&id=" + p.getId() +
+                                "&nome=" + p.getNome() +
+                                "&senha=" + p.getsenha() +
+                                "&cpf=" + p.getCpf() +
+                                "&email=" + p.getEmail()
+                            );
+                    rd.forward(request, response);
+                    break;
+
                 case "edicao":
                     p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
                     p.setId(Integer.parseInt(id));
@@ -58,17 +70,27 @@ public class PerfilSrv extends HttpServlet {
                     rd.forward(request, response);
                     break;
 
+                case "edicao-admin":
+                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
+                    p.setId(Integer.parseInt(id));
+
+                    dao.editar(p);
+
+                    rd = request.getRequestDispatcher("telaUsuario.jsp?nome=admin&senha=admin");
+                    rd.forward(request, response);
+                    break;
+
                 case "exclusao":
                     dao.excluir(dao.pesquisarPorId(Integer.parseInt(id)));
                     rd = request.getRequestDispatcher(
-                                "listagem.jsp?lista=" + listagemAdmin() + "&nome=admin&senha=admin");
+                                "listagemAdmin.jsp?lista=" + listagemAdmin() + "&nome=admin&senha=admin");
                     rd.forward(request, response);
                     break;
 
                 case "listagem":
                     if (nome.equals("admin") && senha.equals("admin")) {
                         rd = request.getRequestDispatcher(
-                                "listagem.jsp?lista=" + listagemAdmin() + "&nome=admin&senha=admin");
+                                "listagemAdmin.jsp?lista=" + listagemAdmin() + "&nome=admin&senha=admin");
                         rd.forward(request, response);
                     } else {
                         rd = request.getRequestDispatcher(
@@ -119,9 +141,15 @@ public class PerfilSrv extends HttpServlet {
                     + "<tr>"
                     + "<td>" + (i + 1)
                     + "<td>" + perfil.getNome() + "</td>"
+                    + "<td>" + perfil.getsenha() + "</td>"
+                    + "<td>" + perfil.getEmail() + "</td>"
+                    + "<td>" + perfil.getCpf() + "</td>"
+                    + "<td><form action=PerfilSrv?acao=pre-edicao method='POST'>"
+                    + "<input type='hidden' name='id' value=" + perfil.getId() 
+                    + "><input type='submit' value=editar id='btnEditar'>" + "</form></td>"
                     + "<td><form action=PerfilSrv?acao=exclusao method='POST'>"
-                    + "<input type='hidden' name='id' value=" +
-                    perfil.getId() + "><input type='submit' value=excluir id='btnExcluir'>" + "</form></td>"
+                    + "<input type='hidden' name='id' value=" + perfil.getId() 
+                    + "><input type='submit' value=excluir id='btnExcluir'>" + "</form></td>"
                     + "</tr>";
         }
         return listaHTML;
