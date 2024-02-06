@@ -34,7 +34,7 @@ public class PerfilSrv extends HttpServlet {
 
             switch (acao) {
                 case "inclusao":
-                    for (int i = 0; i < dao.listar().size(); i++) {
+                    /*for (int i = 0; i < dao.listar().size(); i++) {
                         if (dao.listar().get(i).getNome().equals(nome) || dao.listar().get(i).getEmail().equals(email) || dao.listar().get(i).getCpf().equals(cpf)) {
                             request.setAttribute("mensagemErro", "credenciais invalidas");
                             rd = request.getRequestDispatcher("formulario.jsp");
@@ -44,8 +44,13 @@ public class PerfilSrv extends HttpServlet {
                             dao.incluir(p);
                             rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
                             rd.forward(request, response);
+                            break;
                         }
-                    }
+                    }*/
+                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
+                    dao.incluir(p);
+                    rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
+                    rd.forward(request, response);
                     break;
 
                 case "pre-edicao":

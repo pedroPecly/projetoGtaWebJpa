@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Perfil {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
     private String senha;

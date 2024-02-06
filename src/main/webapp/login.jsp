@@ -26,7 +26,6 @@
             <div class="menu">
                 <ul>
                     <li class="links"><a href="index.html">Home</a></li>
-                    <li class="links"><a href="sobre.html">Sobre</a></li>
                 </ul>
             </div>
             <img id="logo" src="imagens/Rockstar_London-Logo.wine.png" alt="Logo Rockstar London">
