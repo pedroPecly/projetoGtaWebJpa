@@ -53,7 +53,7 @@
                 <li><a href="#">Política de Privacidade</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
-            <p>&copy; 2023 Trabalho de Hipermídia. Todos os direitos reservados.</p>
+            <p>&copy; 2024 Trabalho de POO. Todos os direitos reservados.</p>
         </div>
     </footer>
 </body>
