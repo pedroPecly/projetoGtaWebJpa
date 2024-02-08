@@ -8,6 +8,10 @@
         <servlet-name>LoginSrv</servlet-name>
         <servlet-class>controller.LoginSrv</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GamesSrv</servlet-name>
+        <servlet-class>controller.GamesSrv</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PerfilSrv</servlet-name>
         <url-pattern>/PerfilSrv</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>LoginSrv</servlet-name>
         <url-pattern>/LoginSrv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GamesSrv</servlet-name>
+        <url-pattern>/GamesSrv</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Perfil;
+import model.dao.DaoFactoryPerfil;
 import model.dao.PerfilDaoJpa;
 
 public class PerfilSrv extends HttpServlet {
