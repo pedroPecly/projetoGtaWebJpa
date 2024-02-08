@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Perfil;
-import model.dao.DaoFactoryPerfil;
 import model.dao.PerfilDaoJpa;
 
 public class PerfilSrv extends HttpServlet {
@@ -29,7 +28,7 @@ public class PerfilSrv extends HttpServlet {
             String senha = request.getParameter("senha");
             String date = request.getParameter("date");
 
-            PerfilDaoJpa dao = DaoFactoryPerfil.novoPerfilDaoJpa();
+            PerfilDaoJpa dao = new PerfilDaoJpa();
             RequestDispatcher rd;
             Perfil p = null;
 
