@@ -29,7 +29,7 @@ public class PerfilSrv extends HttpServlet {
             String senha = request.getParameter("senha");
             String date = request.getParameter("date");
 
-            PerfilDaoJpa dao = new PerfilDaoJpa();
+            PerfilDaoJpa dao = DaoFactoryPerfil.novoPerfilDaoJpa();
             RequestDispatcher rd;
             Perfil p = null;
 
