@@ -1,6 +1,5 @@
 <%-- Document : formulario Created on : 14 de dez. de 2023, 13:08:49 Author : Pedro --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 

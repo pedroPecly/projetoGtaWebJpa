@@ -12,16 +12,23 @@
 
 <%
     String acao = request.getParameter("acao");
-    String nome     = request.getParameter("nome");
+    String id = request.getParameter("id");
+    String nome = request.getParameter("nome");
     String senha = request.getParameter("senha");
     String nomeJogo = request.getParameter("nomeJogo");
-    bolean zerado = request.getParameter("zerado");
-    
+    boolean zerado = false;  // Valor padrão
+    String zeradoParam = request.getParameter("zerado");
+
+    if (zeradoParam != null && !zeradoParam.isEmpty()) {
+        zerado = Boolean.parseBoolean(zeradoParam);
+    }
+
     if (acao.equals("adicionarJogo")) {
         nomeJogo = "";
         zerado = false;
     }
 %>
+
 
 <body>
     <% String mensagemErro = (String) request.getAttribute("mensagemErro"); %>
@@ -34,7 +41,7 @@
         <nav class="cabecalho">
             <div class="menu">
                 <ul>
-                    <% if (acao != null && acao.equals("edicao")) { %>
+                    <% if (acao != null && (acao.equals("edicao") || acao.equals("adicionarJogo"))) { %>
                         <li class="links"><a href="telaUsuario.jsp?nome=<%= nome%>&senha=<%= senha%>">Voltar</a></li>
                     <% } else { %>
                         <li class="links"><a href="index.html">Voltar</a></li>
@@ -46,23 +53,23 @@
     </header>
     <main>
         <div id="formulario">
-            <form action="PerfilSrv" method="POST" autocomplete="off">
-                <p>
-                    <input type="hidden" name="id" value="<%= id %>">
-                </p>
-                <p>
-                    <input type="hidden" name="idPerfil" value="<%= idPerfil %>">
-                </p>
+            <form action="GamesSrv" method="POST" autocomplete="off">
                 <p>
                     <input type="hidden" name="acao" value="<%= acao %>">
                 </p>
                 <p>
+                    <input type="hidden" name="nome" value="<%= nome %>">
+                </p>
+                <p>
+                    <input type="hidden" name="senha" value="<%= senha %>">
+                </p>
+                <p>
                     <label for="nome">Nome do Jogo:</label>
-                    <input type="text" id="nome" name="nome" placeholder="Informe o nome do jogo" value="<%= nome %>" required>
+                    <input type="text" name="nomeJogo" placeholder="Informe o nome do jogo" value="<%= nomeJogo %>" required>
                 </p>
                 <p>
                     <label for="jogoZerado">Jogo Zerado:</label>
-                    <input type="checkbox" id="jogoZerado" name="jogoZerado" <%= (jogoZerado) ? "checked" : "" %>>
+                    <input type="checkbox" name="zerado" <%= (zerado) ? "checked='checked'" : "" %>>
                 </p>
                 <div class="botoes">
                     <input type="submit" value="Enviar" id="btnEnviar">

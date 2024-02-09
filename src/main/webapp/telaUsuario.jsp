@@ -38,6 +38,12 @@
                 <input type="hidden" name="senha" value="<%=senha%>">
                 <button type="submit" class="btn">Editar perfil</button>
             </form>
+            <form action="GamesSrv" method="POST">
+                <input type="hidden" name="acao" value="listagemJogos">
+                <input type="hidden" name="nome" value="<%=nome%>">
+                <input type="hidden" name="senha" value="<%=senha%>">
+                <button type="submit" class="btn">Lista de Jogos</button>
+            </form>
             <form action="PerfilSrv" method="POST">
                 <input type="hidden" name="acao" value="listagem">
                 <input type="hidden" name="nome" value="<%=nome%>">

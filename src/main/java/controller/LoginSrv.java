@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Games;
 import model.Perfil;
+import model.dao.DaoFactoryGames;
+import model.dao.GamesDaoJpa;
 import model.dao.PerfilDaoJpa;
 
 public class LoginSrv extends HttpServlet {
@@ -23,6 +26,7 @@ public class LoginSrv extends HttpServlet {
             String acao = request.getParameter("acao");
             String nome = request.getParameter("nome");
             String senha = request.getParameter("senha");
+
 
             RequestDispatcher rd;
             Perfil p = null;
@@ -52,6 +56,8 @@ public class LoginSrv extends HttpServlet {
                             );
                     rd.forward(request, response);
                     break;
+
+                
             }
         } catch (Exception ex) {
             Logger.getLogger(LoginSrv.class.getName()).log(Level.SEVERE, null, ex);

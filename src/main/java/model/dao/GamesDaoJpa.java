@@ -65,7 +65,7 @@ public class GamesDaoJpa implements InterfaceDao<Games> {
         EntityManager em = ConnFactory.getEntityManager();
         try {
             em.getTransaction().begin();
-            lista = em.createQuery("FROM Perfil p").getResultList();
+            lista = em.createQuery("FROM Games g").getResultList();
             em.getTransaction().commit();
         } finally {
             em.close();
