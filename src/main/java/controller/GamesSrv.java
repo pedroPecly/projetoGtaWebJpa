@@ -41,7 +41,7 @@ public class GamesSrv extends HttpServlet {
                             }
                             g = new Games(nomeJogo, zerado, id);
                             dao.incluir(g);
-                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "acao=listagemJogos&id=" + id + "&nome=" + nome + "&senha=" + senha);
+                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "&acao=listagemJogos&id=" + id + "&nome=" + nome + "&senha=" + senha);
                             rd.forward(request, response);
                             break;
                             
