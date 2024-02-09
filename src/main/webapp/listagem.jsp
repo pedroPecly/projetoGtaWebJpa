@@ -15,7 +15,7 @@
 
     <%
         String listaHTML = request.getParameter("lista");
-        String id = request.getParameter("id");
+        //String id = request.getParameter("id");
         String acao = request.getParameter("acao");
         String nome = request.getParameter("nome");
         String senha = request.getParameter("senha");
@@ -56,9 +56,7 @@
                         <p>
                             <input type="hidden" name="acao" value="adicionarJogo">
                         </p>
-                        <p>
-                            <input type="hidden" name="id" value="<%= id %>">
-                        </p>
+                        
                         <p>
                             <input type="hidden" name="nome" value="<%=nome%>">
                         </p>

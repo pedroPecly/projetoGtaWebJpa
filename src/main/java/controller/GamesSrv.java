@@ -25,6 +25,7 @@ public class GamesSrv extends HttpServlet {
                     String acao = request.getParameter("acao");
                     String nome = request.getParameter("nome");
                     String senha = request.getParameter("senha");
+                    String idGame = request.getParameter("id");
 
                     int id = verificarPerfil(nome, senha).getId();
                     Games g = null;
@@ -41,18 +42,25 @@ public class GamesSrv extends HttpServlet {
                             }
                             g = new Games(nomeJogo, zerado, id);
                             dao.incluir(g);
-                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "&acao=listagemJogos&id=" + id + "&nome=" + nome + "&senha=" + senha);
+                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "&acao=listagemJogos"+ "&nome=" + nome + "&senha=" + senha);
                             rd.forward(request, response);
                             break;
                             
                         case "listagemJogos":
-                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "acao=" + acao + "&id=" + id + "&nome=" + nome + "&senha=" + senha);
+                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "acao=" + acao + "&nome=" + nome + "&senha=" + senha);
+                            rd.forward(request, response);
+                            break;
+
+                        case "exclusao":
+                            
+                            dao.excluir(dao.pesquisarPorId(Integer.parseInt(idGame)));
+                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "&acao=listagemJogos&nome=" + nome + "&senha=" + senha);
                             rd.forward(request, response);
                             break;
                         
                     }
                 } catch (Exception ex) {
-                    Logger.getLogger(PerfilSrv.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GamesSrv.class.getName()).log(Level.SEVERE, null, ex);
                 }
     }
 
@@ -62,7 +70,7 @@ public class GamesSrv extends HttpServlet {
         try {
             lista = dao.listar();
         } catch (Exception ex) {
-            System.out.println("erro na linha 64");
+            Logger.getLogger(GamesSrv.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         String listaHTML = "";
