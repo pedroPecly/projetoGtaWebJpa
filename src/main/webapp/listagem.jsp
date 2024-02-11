@@ -15,7 +15,7 @@
 
     <%
         String listaHTML = request.getParameter("lista");
-        //String id = request.getParameter("id");
+        String id = request.getParameter("id");
         String acao = request.getParameter("acao");
         String nome = request.getParameter("nome");
         String senha = request.getParameter("senha");

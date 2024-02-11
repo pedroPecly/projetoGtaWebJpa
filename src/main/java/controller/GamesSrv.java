@@ -42,20 +42,24 @@ public class GamesSrv extends HttpServlet {
                             }
                             g = new Games(nomeJogo, zerado, id);
                             dao.incluir(g);
-                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "&acao=listagemJogos"+ "&nome=" + nome + "&senha=" + senha);
+                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id, nome, senha) + "&acao=listagemJogos"+ "&nome=" + nome + "&senha=" + senha);
                             rd.forward(request, response);
                             break;
                             
                         case "listagemJogos":
-                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "acao=" + acao + "&nome=" + nome + "&senha=" + senha);
+                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id, nome, senha) + "acao=" + acao + "&nome=" + nome + "&senha=" + senha);
                             rd.forward(request, response);
                             break;
 
                         case "exclusao":
                             
                             dao.excluir(dao.pesquisarPorId(Integer.parseInt(idGame)));
-                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id) + "&acao=listagemJogos&nome=" + nome + "&senha=" + senha);
+                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id, nome, senha) + "&acao=listagemJogos&nome=" + nome + "&senha=" + senha);
                             rd.forward(request, response);
+                            break;
+
+                        case "pre-edicao":
+                            g = dao.pesquisarPorId(Integer.parseInt(idGame));
                             break;
                         
                     }
@@ -64,7 +68,7 @@ public class GamesSrv extends HttpServlet {
                 }
     }
 
-    private String listagemJogos(int id) {
+    private String listagemJogos(int id, String nome, String senha) {
         GamesDaoJpa dao = new GamesDaoJpa();
         List<Games> lista = null;
         try {
@@ -84,10 +88,14 @@ public class GamesSrv extends HttpServlet {
                         + "<td>" + games.getNome() + "</td>"
                         + "<td>" + games.getZerado() + "</td>"
                         + "<td><form action=GamesSrv?acao=pre-edicao method='POST'>"
-                        + "<input type='hidden' name='id' value=" + games.getId() 
+                        + "<input type='hidden' name='id' value=" + games.getId()
+                        + "><input type='hidden' name='nome' value=" + nome 
+                        + "><input type='hidden' name='senha' value=" + senha 
                         + "><input type='submit' value=editar id='btnEditar'>" + "</form></td>"
                         + "<td><form action=GamesSrv?acao=exclusao method='POST'>"
                         + "<input type='hidden' name='id' value=" + games.getId() 
+                        + "><input type='hidden' name='nome' value=" + nome 
+                        + "><input type='hidden' name='senha' value=" + senha
                         + "><input type='submit' value=excluir id='btnExcluir'>" + "</form></td>"
                         + "</tr>";
             }

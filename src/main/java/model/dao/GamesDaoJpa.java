@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import model.Games;
+import model.Perfil;
 
 public class GamesDaoJpa implements InterfaceDao<Games> {
 
@@ -37,8 +38,8 @@ public class GamesDaoJpa implements InterfaceDao<Games> {
         EntityManager em = ConnFactory.getEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(entidade);
-            em.getTransaction().commit();
+            em.remove(em.find(Games.class, entidade.getId()));
+            em.getTransaction().commit();;
         } finally {
             em.close();
         }
