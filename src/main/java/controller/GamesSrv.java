@@ -26,6 +26,12 @@ public class GamesSrv extends HttpServlet {
                     String nome = request.getParameter("nome");
                     String senha = request.getParameter("senha");
                     String idGame = request.getParameter("id");
+                    String nomeJogo = request.getParameter("nomeJogo");
+                    String zeradoParam = request.getParameter("zerado");
+                    boolean zerado = "on".equals(zeradoParam);
+                    if (zeradoParam == null) {
+                        zerado = false;
+                    }
 
                     int id = verificarPerfil(nome, senha).getId();
                     Games g = null;
@@ -34,12 +40,12 @@ public class GamesSrv extends HttpServlet {
 
                     switch (acao) {
                         case "adicionarJogo":
-                            String nomeJogo = request.getParameter("nomeJogo");
+                            /*String nomeJogo = request.getParameter("nomeJogo");
                             String zeradoParam = request.getParameter("zerado");
                             boolean zerado = "on".equals(zeradoParam);
                             if (zeradoParam == null) {
                                 zerado = false;
-                            }
+                            }*/
                             g = new Games(nomeJogo, zerado, id);
                             dao.incluir(g);
                             rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id, nome, senha) + "&acao=listagemJogos"+ "&nome=" + nome + "&senha=" + senha);
@@ -60,6 +66,22 @@ public class GamesSrv extends HttpServlet {
 
                         case "pre-edicao":
                             g = dao.pesquisarPorId(Integer.parseInt(idGame));
+                            if(g.getZerado() == true){
+                                zeradoParam = "on";
+                            }
+
+                            rd = request.getRequestDispatcher("formularioGames.jsp?acao=edicao&nome=" + nome + "&senha=" + senha + "&nomeJogo=" + g.getNome() + "&zeradoParam=" + zeradoParam + "&id=" + g.getId());
+                            rd.forward(request, response);
+                            break;
+
+                        case "edicao":
+                            g = new Games(nomeJogo, zerado, id);
+                            g.setId(Integer.parseInt(idGame));
+
+                            dao.editar(g);
+
+                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id, nome, senha) + "&acao=listagemJogos"+ "&nome=" + nome + "&senha=" + senha);
+                            rd.forward(request, response);
                             break;
                         
                     }

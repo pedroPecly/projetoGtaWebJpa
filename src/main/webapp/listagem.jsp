@@ -52,21 +52,23 @@
 
                 </table>
                 <% if (acao != null && acao.equals("listagemJogos")) { %>
-                    <form action="formularioGames.jsp" method="POST">
-                        <p>
-                            <input type="hidden" name="acao" value="adicionarJogo">
-                        </p>
-                        
-                        <p>
-                            <input type="hidden" name="nome" value="<%=nome%>">
-                        </p>
-                        <p>
-                            <input type="hidden" name="senha" value="<%=senha%>">
-                        </p>
-                        <p>
-                            <input type="submit" value="Adicionar" id="btnEditar">
-                        </p>
-                    </form>
+                    <center>
+                        <form action="formularioGames.jsp" method="POST">
+                            <p>
+                                <input type="hidden" name="acao" value="adicionarJogo">
+                            </p>
+                            
+                            <p>
+                                <input type="hidden" name="nome" value="<%=nome%>">
+                            </p>
+                            <p>
+                                <input type="hidden" name="senha" value="<%=senha%>">
+                            </p>
+                            <p>
+                                <input type="submit" value="Adicionar" id="btnEditar">
+                            </p>
+                        </form>
+                    </center>
                 <% } %>
             </div>
         </main>

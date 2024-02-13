@@ -17,10 +17,12 @@
     String senha = request.getParameter("senha");
     String nomeJogo = request.getParameter("nomeJogo");
     boolean zerado = false;  // Valor padrão
-    String zeradoParam = request.getParameter("zerado");
+    String zeradoParam = request.getParameter("zeradoParam");
 
-    if (zeradoParam != null && !zeradoParam.isEmpty()) {
-        zerado = Boolean.parseBoolean(zeradoParam);
+    if (zeradoParam != null && !zeradoParam.isEmpty() && zeradoParam.equals("on")) {
+        zerado = true;
+    } else {
+        zerado = false;
     }
 
     if (acao.equals("adicionarJogo")) {
@@ -56,6 +58,9 @@
             <form action="GamesSrv" method="POST" autocomplete="off">
                 <p>
                     <input type="hidden" name="acao" value="<%= acao %>">
+                </p>
+                <p>
+                    <input type="hidden" name="id" value="<%= id %>">
                 </p>
                 <p>
                     <input type="hidden" name="nome" value="<%= nome %>">
