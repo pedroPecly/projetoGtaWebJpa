@@ -1,9 +1,3 @@
-<%-- 
-    Document   : listagem
-    Created on : 22 de dez. de 2023, 14:46:34
-    Author     : Pedro
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -36,20 +30,35 @@
             <div id="lista">
                 <table>
                     <thead>
-                        <tr>
-                            <% if (acao != null && !acao.equals("listagemJogos")) { %>
-                                <th>posicao</th>
-                            <% } %>
-                            <th>Nome</th>
-                            <% if (acao != null && acao.equals("listagemJogos")) { %>
+                        <% if (acao != null && acao.equals("listagemJogos")) { %>
+                            <tr>
+                                <th>Nome</th>
                                 <th>Zerado</th>
-                            <% } %>
-                        </tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        <% } %>
+                        <% if (acao != null && acao.equals("listagem")) { %>
+                            <tr>
+                                <th>posicao</th>
+                                <th>Nome</th>
+                            </tr>
+                        <% } %>
+                        <% if (acao != null && (acao.equals("listagemAdmin") || acao.equals("exclusao"))) { %>
+                            <tr>
+                                <th>Posicao</th>
+                                <th>Nome</th>
+                                <th>senha</th>
+                                <th>Email</th>
+                                <th>cpf</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        <% } %>
                     </thead>
                     <tbody>
                         <%=listaHTML %>
                     </tbody>
-
                 </table>
                 <% if (acao != null && acao.equals("listagemJogos")) { %>
                     <center>

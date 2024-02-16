@@ -11,10 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Games;
 import model.Perfil;
-import model.dao.DaoFactoryGames;
-import model.dao.GamesDaoJpa;
 import model.dao.PerfilDaoJpa;
 
 public class LoginSrv extends HttpServlet {
@@ -52,7 +49,8 @@ public class LoginSrv extends HttpServlet {
                                 "&nome=" + p.getNome() +
                                 "&senha=" + p.getsenha() +
                                 "&cpf=" + p.getCpf() +
-                                "&email=" + p.getEmail()
+                                "&email=" + p.getEmail() +
+                                "&data=" + p.getDataNascimento()
                             );
                     rd.forward(request, response);
                     break;

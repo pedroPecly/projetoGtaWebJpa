@@ -17,12 +17,14 @@
     String senha = request.getParameter("senha");
     String cpf = request.getParameter("cpf");
     String email = request.getParameter("email");
+    String data = request.getParameter("data");
 
     if (id == null) {
         nome = "";
         senha = "";
         cpf = "";
         email = "";
+        data = "";
     }
 %>
 
@@ -74,7 +76,7 @@
                 </p>
                 <p>
                     <label for="date">Data Nasc:</label>
-                    <input type="date" name="date" id="date" required>
+                    <input type="date" name="data" id="data" value="<%= data %>" required>
                 </p>
                 <div class="botoes">
                     <input type="submit" value="Enviar" id="btnEnviar">

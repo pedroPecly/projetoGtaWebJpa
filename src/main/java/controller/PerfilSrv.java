@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Games;
 import model.Perfil;
+import model.dao.GamesDaoJpa;
 import model.dao.PerfilDaoJpa;
 
 public class PerfilSrv extends HttpServlet {
@@ -26,7 +28,7 @@ public class PerfilSrv extends HttpServlet {
             String cpf = request.getParameter("cpf");
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
-            String date = request.getParameter("date");
+            String data = request.getParameter("data");
 
             PerfilDaoJpa dao = new PerfilDaoJpa();
             RequestDispatcher rd;
@@ -34,20 +36,7 @@ public class PerfilSrv extends HttpServlet {
 
             switch (acao) {
                 case "inclusao":
-                    /*for (int i = 0; i < dao.listar().size(); i++) {
-                        if (dao.listar().get(i).getNome().equals(nome) || dao.listar().get(i).getEmail().equals(email) || dao.listar().get(i).getCpf().equals(cpf)) {
-                            request.setAttribute("mensagemErro", "credenciais invalidas");
-                            rd = request.getRequestDispatcher("formulario.jsp");
-                            rd.forward(request, response);
-                        } else {
-                            p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
-                            dao.incluir(p);
-                            rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
-                            rd.forward(request, response);
-                            break;
-                        }
-                    }*/
-                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
+                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(data));
                     dao.incluir(p);
                     rd = request.getRequestDispatcher("telaUsuario.jsp?nome=" + p.getNome() + "&senha=" + p.getsenha());
                     rd.forward(request, response);
@@ -60,13 +49,14 @@ public class PerfilSrv extends HttpServlet {
                                 "&nome=" + p.getNome() +
                                 "&senha=" + p.getsenha() +
                                 "&cpf=" + p.getCpf() +
-                                "&email=" + p.getEmail()
+                                "&email=" + p.getEmail() +
+                                "&data=" + p.getDataNascimento()
                             );
                     rd.forward(request, response);
                     break;
 
                 case "edicao":
-                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
+                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(data));
                     p.setId(Integer.parseInt(id));
 
                     dao.editar(p);
@@ -76,7 +66,7 @@ public class PerfilSrv extends HttpServlet {
                     break;
 
                 case "edicao-admin":
-                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(date));
+                    p = new Perfil(nome, senha, cpf, email, LocalDate.parse(data));
                     p.setId(Integer.parseInt(id));
 
                     dao.editar(p);
@@ -86,24 +76,42 @@ public class PerfilSrv extends HttpServlet {
                     break;
 
                 case "exclusao":
+                    excluirGames(dao.pesquisarPorId(Integer.parseInt(id)));
                     dao.excluir(dao.pesquisarPorId(Integer.parseInt(id)));
                     rd = request.getRequestDispatcher(
-                                "listagemAdmin.jsp?lista=" + listagemAdmin() + "&nome=admin&senha=admin");
+                                "listagem.jsp?lista=" + listagemAdmin() + "&nome=admin&senha=admin");
                     rd.forward(request, response);
                     break;
 
                 case "listagem":
                     if (nome.equals("admin") && senha.equals("admin")) {
                         rd = request.getRequestDispatcher(
-                                "listagemAdmin.jsp?lista=" + listagemAdmin() + "&nome=admin&senha=admin");
+                                "listagem.jsp?lista=" + listagemAdmin() + "&nome="+ nome + "&senha=" + senha + "&acao=listagemAdmin");
                         rd.forward(request, response);
                     } else {
                         rd = request.getRequestDispatcher(
-                                "listagem.jsp?lista=" + listagem() + "&nome=" + nome + "&senha=" + senha);
+                                "listagem.jsp?lista=" + listagem() + "&nome=" + nome + "&senha=" + senha + "&acao=" + acao);
                         rd.forward(request, response);
                     }
                     break;
 
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(PerfilSrv.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void excluirGames(Perfil p){
+        GamesDaoJpa dao = new GamesDaoJpa();
+        List<Games> lista;
+        try {
+            lista = dao.listar();
+            if(lista != null){
+                for (int i = 0; i <= lista.size(); i++){
+                    if(lista.get(i).getIdPerfil() == p.getId()){
+                        dao.excluir(lista.get(i));
+                    }
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(PerfilSrv.class.getName()).log(Level.SEVERE, null, ex);

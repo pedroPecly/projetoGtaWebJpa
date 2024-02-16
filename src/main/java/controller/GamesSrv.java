@@ -40,12 +40,6 @@ public class GamesSrv extends HttpServlet {
 
                     switch (acao) {
                         case "adicionarJogo":
-                            /*String nomeJogo = request.getParameter("nomeJogo");
-                            String zeradoParam = request.getParameter("zerado");
-                            boolean zerado = "on".equals(zeradoParam);
-                            if (zeradoParam == null) {
-                                zerado = false;
-                            }*/
                             g = new Games(nomeJogo, zerado, id);
                             dao.incluir(g);
                             rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id, nome, senha) + "&acao=listagemJogos"+ "&nome=" + nome + "&senha=" + senha);
