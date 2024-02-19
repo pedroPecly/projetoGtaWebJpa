@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import model.Games;
-import model.Perfil;
 
 public class GamesDaoJpa implements InterfaceDao<Games> {
 
