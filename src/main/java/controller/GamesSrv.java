@@ -42,7 +42,7 @@ public class GamesSrv extends HttpServlet {
                         case "adicionarJogo":
                             g = new Games(nomeJogo, zerado, id);
                             dao.incluir(g);
-                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id, nome, senha) + "&acao=listagemJogos"+ "&nome=" + nome + "&senha=" + senha);
+                            rd = request.getRequestDispatcher("listagem.jsp?lista="+ listagemJogos(id, nome, senha) + "&acao=listagemJogos&nome=" + nome + "&senha=" + senha);
                             rd.forward(request, response);
                             break;
                             

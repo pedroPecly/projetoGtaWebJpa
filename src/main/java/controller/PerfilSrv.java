@@ -149,23 +149,25 @@ public class PerfilSrv extends HttpServlet {
         }
         String listaHTML = "";
         for (int i = 0; i < lista.size(); i++) {
-            Perfil perfil = null;
-            perfil = lista.get(i);
-            listaHTML = listaHTML
-                    + "<tr>"
-                    + "<td>" + (i + 1)
-                    + "<td>" + perfil.getNome() + "</td>"
-                    + "<td>" + perfil.getsenha() + "</td>"
-                    + "<td>" + perfil.getEmail() + "</td>"
-                    + "<td>" + perfil.getCpf() + "</td>"
-                    + "<td><form action=PerfilSrv?acao=pre-edicao method='POST'>"
-                    + "<input type='hidden' name='id' value=" + perfil.getId() 
-                    + "><input type='submit' value=editar id='btnEditar'>" + "</form></td>"
-                    + "<td><form action=PerfilSrv?acao=exclusao method='POST'>"
-                    + "<input type='hidden' name='id' value=" + perfil.getId() 
-                    + "><input type='submit' value=excluir id='btnExcluir'>" + "</form></td>"
-                    + "</tr>";
-        }
+            if(!lista.get(i).getNome().equals("admin") && !lista.get(i).getsenha().equals("admin")){
+                Perfil perfil = null;
+                perfil = lista.get(i);
+                listaHTML = listaHTML
+                        + "<tr>"
+                        + "<td>" + (i + 1)
+                        + "<td>" + perfil.getNome() + "</td>"
+                        + "<td>" + perfil.getsenha() + "</td>"
+                        + "<td>" + perfil.getEmail() + "</td>"
+                        + "<td>" + perfil.getCpf() + "</td>"
+                        + "<td><form action=PerfilSrv?acao=pre-edicao method='POST'>"
+                        + "<input type='hidden' name='id' value=" + perfil.getId() 
+                        + "><input type='submit' value=editar id='btnEditar'>" + "</form></td>"
+                        + "<td><form action=PerfilSrv?acao=exclusao method='POST'>"
+                        + "<input type='hidden' name='id' value=" + perfil.getId() 
+                        + "><input type='submit' value=excluir id='btnExcluir'>" + "</form></td>"
+                        + "</tr>";
+                }
+            }
         return listaHTML;
     }
 
